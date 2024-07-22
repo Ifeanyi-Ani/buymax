@@ -8,6 +8,11 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
+export const metadata: Metadata = {
+  title: "buymax",
+  description: "buymax e-commerce web app",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
