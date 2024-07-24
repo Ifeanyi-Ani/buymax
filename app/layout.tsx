@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Josefin_Sans as FontSans } from "next/font/google";
-import "@/app/globals.css";
-import { cn } from "@/lib/utils";
+import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
+
 import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/providers/modal-provider";
+
+import "@/app/globals.css";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -26,11 +29,12 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={cn(
-            "min-h-screen dark:bg-primary-950 font-sans antialiased",
+            "min-h-screen font-sans antialiased",
             fontSans.variable,
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>
