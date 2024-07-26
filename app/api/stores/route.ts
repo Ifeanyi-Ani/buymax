@@ -13,4 +13,9 @@ export async function POST(req: Request) {
     if (!name) {
       return new NextResponse("Name is required", { status: 404 });
     }
+    const store = await prismaDb.store.create({
+      data: { name, userId },
+    });
+
+    return NextResponse.json(store);
 }
