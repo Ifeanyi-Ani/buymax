@@ -16,4 +16,11 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
+  const store = await prismaDb.store.findFirst({
+    where: {
+      id: params.storeId,
+      userId,
+    },
+  });
+
 }
