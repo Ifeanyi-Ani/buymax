@@ -23,4 +23,8 @@ export default async function DashboardLayout({
     },
   });
 
+  if (!store) {
+    redirect("/");
+  }
+
 }
