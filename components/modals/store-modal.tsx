@@ -26,6 +26,7 @@ const formSchema = z.object({
 
 const StoreModal = () => {
   const { isOpen, onClose } = useStoreModal();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,6 +46,7 @@ const StoreModal = () => {
       onClose={onClose}
     >
       <div>
+      <section>
         <div className="space-y-4 pb-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -57,6 +59,11 @@ const StoreModal = () => {
                       <FormLabel>name</FormLabel>
                       <FormControl>
                         <Input placeholder="E-commerce" {...field} />
+                        <Input
+                          disabled={isLoading}
+                          placeholder="E-commerce"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -64,15 +71,21 @@ const StoreModal = () => {
                 }}
               />
               <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                <Button variant="outline" onClick={onClose}>
+                <Button
+                  disabled={isLoading}
+                  variant="outline"
+                  onClick={onClose}
+                >
                   Cancel
                 </Button>
-                <Button type="submit">Continue</Button>
+                <Button disabled={isLoading} type="submit">
+                  Continue
+                </Button>
               </div>
             </form>
           </Form>
         </div>
-      </div>
+      </section>
     </Modal>
   );
 };
