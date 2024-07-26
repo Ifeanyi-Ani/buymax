@@ -10,4 +10,10 @@ export default async function DashboardLayout({
   children: React.ReactNode;
   params: { storeId: string };
 }) {
+  const { userId } = auth();
+
+  if (!userId) {
+    redirect("/login");
+  }
+
 }
