@@ -67,7 +67,6 @@ const StoreModal = () => {
                     <FormItem>
                       <FormLabel>name</FormLabel>
                       <FormControl>
-                        <Input placeholder="E-commerce" {...field} />
                         <Input
                           disabled={isLoading}
                           placeholder="E-commerce"
@@ -81,6 +80,7 @@ const StoreModal = () => {
               />
               <div className="pt-6 space-x-2 flex items-center justify-end w-full">
                 <Button
+                  type="button"
                   disabled={isLoading}
                   variant="outline"
                   onClick={onClose}
