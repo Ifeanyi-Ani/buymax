@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  try {
     const { userId } = auth();
     const body = await req.json();
 
@@ -18,4 +19,6 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(store);
+  } catch (error) {
+  }
 }
