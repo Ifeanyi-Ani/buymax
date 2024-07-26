@@ -27,4 +27,11 @@ export default async function DashboardLayout({
     redirect("/");
   }
 
+  return (
+    <>
+      <div> this will be the navbar</div>
+      <UserButton afterSwitchSessionUrl="/login" />
+      {children}
+    </>
+  );
 }
