@@ -38,6 +38,8 @@ const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setIsLoading(true);
+      const response = await axios.post("/api/stores", values);
+      const data = response.data;
     } catch (error) {
       console.log(error);
     } finally {
@@ -51,7 +53,6 @@ const StoreModal = () => {
       isOpen={isOpen}
       onClose={onClose}
     >
-      <div>
       <section>
         <div className="space-y-4 pb-4">
           <Form {...form}>
