@@ -36,6 +36,12 @@ export default function StoreSwticher({
   className,
   items = [],
 }: StoreSwitcherProps) {
+  const [open, setOpen] = useState(false);
+  const storeModal = useStoreModal();
+  const { storeId } = useParams();
+  const router = useRouter();
+
+  const storeItem = items.map((item) => ({ label: item.name, value: item.id }));
   return (
   );
 }
