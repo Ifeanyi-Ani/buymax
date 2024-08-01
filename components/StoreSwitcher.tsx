@@ -46,6 +46,10 @@ export default function StoreSwticher({
 
   const currentStore = storeItem.find((item) => item.value === storeId);
 
+  const onStoreSelect = (store: { value: string; label: string }) => {
+    setOpen(false);
+    router.push(`/${store.value}`);
+  };
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
