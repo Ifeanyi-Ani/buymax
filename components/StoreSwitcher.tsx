@@ -64,6 +64,7 @@ export default function StoreSwticher({
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
+            <CommandInput placeholder="Search store..." />
           </CommandList>
         </Command>
       </PopoverContent>
