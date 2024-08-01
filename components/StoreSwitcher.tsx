@@ -65,6 +65,7 @@ export default function StoreSwticher({
         <Command>
           <CommandList>
             <CommandInput placeholder="Search store..." />
+            <CommandEmpty>No store found.</CommandEmpty>
           </CommandList>
         </Command>
       </PopoverContent>
