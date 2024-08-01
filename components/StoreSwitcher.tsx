@@ -43,5 +43,24 @@ export default function StoreSwticher({
 
   const storeItem = items.map((item) => ({ label: item.name, value: item.id }));
   return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          size="sm"
+          role="combobox"
+          aria-expanded={open}
+          aria-label="Select a store"
+          className={cn(
+            "flex w-[200px] justify-between items-center",
+            className,
+          )}
+        >
+          <StoreIcon className="mr-2 h-4 w-4" />
+          {currentStore?.label}
+          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+    </Popover>
   );
 }
