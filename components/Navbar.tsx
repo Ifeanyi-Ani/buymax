@@ -11,6 +11,12 @@ const Navbar = async () => {
   if (!userId) {
     redirect("/login");
   }
+  const store = await prismaDb.store.findMany({
+    where: {
+      userId: userId,
+    },
+  });
+
   return (
     <div className="border-b ">
       <div className="flex h-16 items-center px-4 gap-4">
