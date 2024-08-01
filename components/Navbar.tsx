@@ -20,6 +20,8 @@ const Navbar = async () => {
   return (
     <div className="border-b ">
       <div className="flex h-16 items-center px-4 gap-4">
+        <StoreSwticher items={store} />
+        <MainNav />
       </div>
     </div>
   );
