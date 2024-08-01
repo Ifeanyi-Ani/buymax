@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import prismaDb from "@/lib/prismaDb";
 import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
