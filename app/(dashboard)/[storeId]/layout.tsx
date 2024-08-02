@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import prismaDb from "@/lib/prismaDb";
 import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
@@ -29,7 +30,7 @@ export default async function DashboardLayout({
 
   return (
     <>
-      <div> this will be the navbar</div>
+      <Navbar />
       <UserButton afterSwitchSessionUrl="/login" />
       {children}
     </>
