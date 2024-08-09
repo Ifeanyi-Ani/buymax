@@ -9,6 +9,7 @@ import { Trash } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import {
   Form,
   FormControl,
@@ -32,6 +33,7 @@ type SettingsFormValues = z.infer<typeof formSchema>;
 export const SettingForm = ({ initialData, storeId }: Props) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
@@ -43,6 +45,7 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
       setLoading(true);
       await axios.patch(`/api/stores/${storeId}`, values);
       toast.success("Store updated sucessfully");
+      router.refresh()
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while updating store");
