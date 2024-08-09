@@ -20,3 +20,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
+type Props = {
+  initialData: Store;
+  storeId: string;
+};
+export const SettingForm = ({ initialData, storeId }: Props) => {
+};
