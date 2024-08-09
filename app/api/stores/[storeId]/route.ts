@@ -41,3 +41,21 @@ export async function PATCH(
   }
 }
 
+export async function DELETE(
+  req: Request,
+  { params }: { params: { storeId: string } },
+) {
+  try {
+    const { userId } = auth();
+    const { storeId } = params;
+
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    if (!storeId) {
+      return new NextResponse("storeId is required", { status: 400 });
+    }
+
+  }
+}
