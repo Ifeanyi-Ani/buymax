@@ -26,5 +26,12 @@ const SettingsPage = async ({ params }: Props) => {
   if (!store) {
     redirect("/");
   }
+  return (
+    <div className="flex flex-col">
+      <div className="flex-1 space-y-4 p-4 pt-6">
+        <SettingForm initialData={store} storeId={storeId}/>
+      </div>
+    </div>
+  );
 };
 export default SettingsPage;
