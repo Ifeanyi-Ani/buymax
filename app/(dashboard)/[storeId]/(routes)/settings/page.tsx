@@ -11,5 +11,17 @@ type Props = {
 };
 
 const SettingsPage = async ({ params }: Props) => {
+  const { userId } = auth();
+  const { storeId } = params;
+
+  if (!userId) {
+    redirect("/login");
+  }
+  const store = await prismaDb.store.findFirst({
+    where: {
+      id: storeId,
+      userId,
+    },
+  });
 };
 export default SettingsPage;
