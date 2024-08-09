@@ -41,9 +41,12 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
     try {
       setLoading(true);
       await axios.patch(`/api/stores/${storeId}`, values);
+      toast.success("Store updated sucessfully");
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong while updating store");
     } finally {
       setLoading(false);
     }
+  };
 };
