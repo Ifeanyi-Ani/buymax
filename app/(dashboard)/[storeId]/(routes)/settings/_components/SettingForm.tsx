@@ -35,4 +35,12 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
     defaultValues: initialData,
   });
 
+  const onSubmit = async (values: SettingsFormValues) => {
+    try {
+      setLoading(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
 };
