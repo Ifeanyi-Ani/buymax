@@ -65,5 +65,8 @@ export async function DELETE(
     });
 
     return NextResponse.json({ message: "Store deleted sucessfully" });
+  } catch (error) {
+    console.log("STORE_DELETE", error);
+    return new NextResponse("Something went wrong, failed to delete");
   }
 }
