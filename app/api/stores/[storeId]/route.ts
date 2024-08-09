@@ -35,4 +35,9 @@ export async function PATCH(
     });
 
     return NextResponse.json(updateStore);
+  } catch (error) {
+    console.log("STORE_PATCH", error);
+    return new NextResponse("Something went wrong");
+  }
 }
+
