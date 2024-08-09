@@ -49,4 +49,51 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
       setLoading(false);
     }
   };
+  return (
+    <>
+      <div className="flex items-center justify-between">
+        <Heading title="Settings" description="Manage your preference" />
+        <Button
+          disabled={loading}
+          variant="destructive"
+          size="icon"
+          onClick={() => {}}
+        >
+          <Trash className="h-4 w-4" />
+        </Button>
+      </div>
+      <Separator />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 w-full"
+        >
+          <div className="grid grid-cols-3 gap-">
+            <FormField
+              control={form.control}
+              name="name"
+              render={function (props) {
+                return (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={loading}
+                        placeholder="Store name"
+                        {...props.field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+          </div>
+          <Button disabled={loading} className="ml-auto" type="submit">
+            Save changes
+          </Button>
+        </form>
+      </Form>
+    </>
+  );
 };
