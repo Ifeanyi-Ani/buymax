@@ -24,5 +24,10 @@ type Props = {
   initialData: Store;
   storeId: string;
 };
+const formSchema = z.object({
+  name: z.string().min(1),
+});
+type SettingsFormValues = z.infer<typeof formSchema>;
+
 export const SettingForm = ({ initialData, storeId }: Props) => {
 };
