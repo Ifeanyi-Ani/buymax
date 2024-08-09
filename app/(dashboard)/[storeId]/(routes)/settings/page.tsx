@@ -4,3 +4,12 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { SettingForm } from "./_components/SettingForm";
 
+type Props = {
+  params: {
+    storeId: string;
+  };
+};
+
+const SettingsPage = async ({ params }: Props) => {
+};
+export default SettingsPage;
