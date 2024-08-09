@@ -40,6 +40,7 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
   const onSubmit = async (values: SettingsFormValues) => {
     try {
       setLoading(true);
+      await axios.patch(`/api/stores/${storeId}`, values);
     } catch (error) {
       console.log(error);
     } finally {
