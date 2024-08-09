@@ -23,4 +23,16 @@ export async function PATCH(
     if (!storeId) {
       return new NextResponse("storeId is required", { status: 400 });
     }
+
+    const updateStore = await prismaDb.store.updateMany({
+      where: {
+        id: storeId,
+        userId,
+      },
+      data: {
+        name,
+      },
+    });
+
+    return NextResponse.json(updateStore);
 }
