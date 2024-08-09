@@ -30,6 +30,8 @@ const formSchema = z.object({
 type SettingsFormValues = z.infer<typeof formSchema>;
 
 export const SettingForm = ({ initialData, storeId }: Props) => {
+  const [loading, setLoading] = useState(false);
+
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
