@@ -23,5 +23,8 @@ const SettingsPage = async ({ params }: Props) => {
       userId,
     },
   });
+  if (!store) {
+    redirect("/");
+  }
 };
 export default SettingsPage;
