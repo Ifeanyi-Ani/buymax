@@ -61,7 +61,9 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
           disabled={loading}
           variant="destructive"
           size="icon"
-          onClick={() => {}}
+          onClick={() => {
+            setOpen(true);
+          }}
         >
           <Trash className="h-4 w-4" />
         </Button>
