@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { UseAlertModal } from "@/components/modals/alert-modal";
 
 type Props = {
   initialData: Store;
@@ -55,6 +56,12 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
   };
   return (
     <>
+      <UseAlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        isLoading={loading}
+      />
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manage your preference" />
         <Button
