@@ -54,6 +54,18 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
       setLoading(false);
     }
   };
+
+  const onDelete = async () => {
+    try {
+      await axios.delete(`/api/stores/${storeId}`);
+      toast.success("Store deleted successfully");
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+      toast.error("Make sure you removed all products and categories first.");
+    }
+  };
   return (
     <>
       <UseAlertModal
