@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { UseAlertModal } from "@/components/modals/alert-modal";
 
 type Props = {
   initialData: Store;
@@ -53,15 +54,35 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
       setLoading(false);
     }
   };
+
+  const onDelete = async () => {
+    try {
+      await axios.delete(`/api/stores/${storeId}`);
+      toast.success("Store deleted successfully");
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+      toast.error("Make sure you removed all products and categories first.");
+    }
+  };
   return (
     <>
+      <UseAlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        isLoading={loading}
+      />
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manage your preference" />
         <Button
           disabled={loading}
           variant="destructive"
           size="icon"
-          onClick={() => {}}
+          onClick={() => {
+            setOpen(true);
+          }}
         >
           <Trash className="h-4 w-4" />
         </Button>
