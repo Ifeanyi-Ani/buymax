@@ -1,4 +1,6 @@
 import { Billboard, Store } from "@prisma/client";
+import { Heading } from "@/components/Heading";
+import { Separator } from "@/components/ui/separator";
 type Props = {
   initialData: Billboard | null;
 };
