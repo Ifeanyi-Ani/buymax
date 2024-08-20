@@ -28,6 +28,13 @@ import { toast } from "sonner";
 import { UseAlertModal } from "@/components/modals/alert-modal";
 import ImageUpload from "@/components/ImageUpload";
 
+const formSchema = z.object({
+  label: z.string().min(3),
+  imageUrl: z.string().min(3),
+});
+
+type BillboardFormValues = z.infer<typeof formSchema>;
+
 type Props = {
   initialData: Billboard | null;
 };
