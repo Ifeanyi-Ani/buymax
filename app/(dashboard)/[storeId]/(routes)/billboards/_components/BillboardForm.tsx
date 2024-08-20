@@ -1,4 +1,6 @@
+import { Billboard, Store } from "@prisma/client";
 type Props = {
+  initialData: Billboard | null;
 };
 
 export const BillboardForm: React.FC<Props> = ({ initialData }) => {
