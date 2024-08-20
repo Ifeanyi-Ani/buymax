@@ -30,6 +30,35 @@ const ImageUpload = (props: ImageUploadProps) => {
 
   return (
     <div>
+      <div className="mb-4 flex items-center gap-4">
+        {value.map((url: string) => {
+          return (
+            <div
+              key={url}
+              className="relative w-[200px] h-[200px] rounded-md overflow-hidden"
+            >
+              <div className="z-10 absolute top-2 right-2">
+                <Button
+                  type="button"
+                  variant="destructive"
+                  onClick={() => onRemove(url)}
+                  size="icon"
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
+
+              <Image
+                fill
+                className="object-cover"
+                alt="billboard-image"
+                src={url}
+              />
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   );
 };
