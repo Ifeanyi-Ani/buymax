@@ -6,6 +6,11 @@ type Props = {
 };
 
 export const BillboardForm: React.FC<Props> = ({ initialData }) => {
+  const title = initialData ? "Edit billboard" : "Create billboard";
+  const description = initialData ? "Edit a billboard" : "Add a new billboard";
+  const formMessage = initialData ? "Billboard updated" : "Billboard created";
+  const buttonText = initialData ? "Save changes" : "Create";
+
   return (
     <>
       <div className="flex items-center justify-between">
