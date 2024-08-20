@@ -63,6 +63,33 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
         <Heading title={title} description={description} />
       </div>
       <Separator />
+      <Form {...form}>
+        <form
+          className="space-y-8 w-full"
+        >
+          <FormField
+            control={form.control}
+            name="imageUrl"
+            render={function (props) {
+              const { field } = props;
+              console.log("field ", field);
+              return (
+                <FormItem>
+                  <FormLabel>Billboard image</FormLabel>
+                  <FormControl>
+                    <ImageUpload
+                      disabled={loading}
+                      value={field.value ? [field.value] : []}
+                      onChange={(url) => field.onChange(url)}
+                      onRemove={() => field.onChange()}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
     </>
   );
 };
