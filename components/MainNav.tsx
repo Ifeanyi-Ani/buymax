@@ -12,6 +12,16 @@ export default function MainNav({ className, ...props }: MainNavProps) {
 
   const routes = [
     {
+      href: `/${storeId}`,
+      label: "Dashboard",
+      active: pathname === `/${storeId}`,
+    },
+    {
+      href: `/${storeId}/billboards`,
+      label: "Billboards",
+      active: pathname === `/${storeId}/billboards`,
+    },
+    {
       href: `/${storeId}/settings`,
       label: "Settings",
       active: pathname === `/${storeId}/settings`,
@@ -25,9 +35,7 @@ export default function MainNav({ className, ...props }: MainNavProps) {
           href={route.href}
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            route.active
-              ? "text-black dark:text-white"
-              : "text-muted-foregroud",
+            route.active ? "text-muted-foreground" : "text-black",
           )}
         >
           {route.label}
