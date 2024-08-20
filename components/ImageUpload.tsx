@@ -13,6 +13,9 @@ interface ImageUploadProps {
   value: string[];
 }
 const ImageUpload = (props: ImageUploadProps) => {
+  const { disabled, onChange, onRemove, value } = props;
+  const [mounted, setMounted] = useState(false);
+
   return (
     <div>
     </div>
