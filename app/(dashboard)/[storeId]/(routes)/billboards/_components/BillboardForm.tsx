@@ -57,6 +57,28 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
     defaultValues: initialData || { label: "", imageUrl: "" },
   });
 
+  const onSubmit = async (data: BillboardFormValues) => {
+    try {
+      setLoading(true);
+
+      if (initialData) {
+        await axios.patch(`/api/${storeId}/billboards/${billboardId}`, data);
+      } else {
+        await axios.post(`/api/${storeId}/billboards`, data);
+      }
+
+      toast.success(formMessage);
+
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+
+      toast.error("Something went wrong while updating store");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -65,6 +87,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
       <Separator />
       <Form {...form}>
         <form
+          onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
           <FormField
