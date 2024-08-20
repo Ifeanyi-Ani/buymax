@@ -90,6 +90,35 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
             }}
           />
 
+          <div className="grid grid-cols-3 gap-">
+            <FormField
+              control={form.control}
+              name="label"
+              render={function (props) {
+                return (
+                  <FormItem>
+                    <FormLabel>Label</FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={loading}
+                        placeholder="Billboard label"
+                        {...props.field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+          </div>
+          <Button disabled={loading} className="ml-auto" type="submit">
+            {buttonText}
+          </Button>
+        </form>
+      </Form>
+
+      <Separator />
+
     </>
   );
 };
