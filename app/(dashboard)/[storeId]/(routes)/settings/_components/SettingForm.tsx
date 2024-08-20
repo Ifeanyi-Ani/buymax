@@ -3,7 +3,7 @@ import * as z from "zod";
 import axios from "axios";
 import { Store } from "@prisma/client";
 import React, { useState } from "react";
-import { Heading } from "./Heading";
+import { Heading } from "@/components/Heading";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -21,6 +21,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { UseAlertModal } from "@/components/modals/alert-modal";
+import { ApiInfo } from "@/components/api-info";
+import { OriginUrl } from "@/hooks/use-originURL";
 
 type Props = {
   initialData: Store;
@@ -36,6 +38,8 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const origin = OriginUrl();
+
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
@@ -46,7 +50,7 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
       setLoading(true);
       await axios.patch(`/api/stores/${storeId}`, values);
       toast.success("Store updated sucessfully");
-      router.refresh()
+      router.refresh();
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong while updating store");
@@ -119,6 +123,14 @@ export const SettingForm = ({ initialData, storeId }: Props) => {
           </Button>
         </form>
       </Form>
+
+      <Separator />
+
+      <ApiInfo
+        title="test"
+        description={`${origin}/api/${storeId}`}
+        variant="public"
+      />
     </>
   );
 };
