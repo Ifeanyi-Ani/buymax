@@ -52,6 +52,11 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
   const formMessage = initialData ? "Billboard updated" : "Billboard created";
   const buttonText = initialData ? "Save changes" : "Create";
 
+  const form = useForm<BillboardFormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: initialData || { label: "", imageUrl: "" },
+  });
+
   return (
     <>
       <div className="flex items-center justify-between">
