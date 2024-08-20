@@ -34,6 +34,18 @@ export async function POST(req: Request, props: PostProps) {
       });
     }
 
+    // Retrieve the store with the provided ID and check if it belongs to the authenticated user.
+    const storeByUserId = await prismaDb.store.findFirst({
+      where: {
+        userId,
+        id: storeId,
+      },
+    });
+
+    if (!storeByUserId) {
+      return new NextResponse("Unauthorized", { status: 403 });
+    }
+
   } catch (error) {
     console.error("BILLBOARD_POST", error);
     return new NextResponse("Internal Server Error", { status: 500 });
