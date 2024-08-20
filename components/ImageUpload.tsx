@@ -16,6 +16,12 @@ const ImageUpload = (props: ImageUploadProps) => {
   const { disabled, onChange, onRemove, value } = props;
   const [mounted, setMounted] = useState(false);
 
+  const onUpload = (result: any) => {
+    console.log("onUpload result", result);
+    console.log("on upload url ", result?.info?.secure_url);
+    onChange(result?.info?.secure_url);
+  };
+
   return (
     <div>
     </div>
