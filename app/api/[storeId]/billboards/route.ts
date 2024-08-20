@@ -1,6 +1,7 @@
 import prismaDb from "@/lib/prismaDb";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
+
 interface PostProps {
   params: {
     storeId: string;
@@ -48,6 +49,12 @@ export async function POST(req: Request, props: PostProps) {
       return new NextResponse("Unauthorized", { status: 403 });
     }
 
+    // Create a new store with the provided details
+    const billboard = await prismaDb.billboard.create({
+      data: { storeId, label, imageUrl },
+    });
+
+    return NextResponse.json(billboard);
   } catch (error) {
     console.error("BILLBOARD_POST", error);
     return new NextResponse("Internal Server Error", { status: 500 });
