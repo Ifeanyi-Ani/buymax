@@ -22,6 +22,12 @@ const ImageUpload = (props: ImageUploadProps) => {
     onChange(result?.info?.secure_url);
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <div>
     </div>
