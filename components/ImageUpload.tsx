@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CldUploadWidget } from "next-cloudinary";
 
 import { ImagePlusIcon, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,6 +60,24 @@ const ImageUpload = (props: ImageUploadProps) => {
         })}
       </div>
 
+      <CldUploadWidget onSuccess={onUpload} uploadPreset="buymax">
+        {function ({ open }) {
+          const onClick = () => {
+            open();
+          };
+          return (
+            <Button
+              onClick={onClick}
+              variant="secondary"
+              type="button"
+              disabled={disabled}
+            >
+              <ImagePlusIcon className="w-4 h-4 mr-2" />
+              Upload an image
+            </Button>
+          );
+        }}
+      </CldUploadWidget>
     </div>
   );
 };
