@@ -96,6 +96,9 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
             disabled={loading}
             variant="destructive"
             size="icon"
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             <Trash className="h-4 w-4" />
           </Button>
@@ -153,6 +156,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
               }}
             />
           </div>
+
           <Button disabled={loading} className="ml-auto" type="submit">
             {buttonText}
           </Button>
