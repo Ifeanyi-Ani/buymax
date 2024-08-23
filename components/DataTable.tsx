@@ -52,9 +52,11 @@ export function DataTable<TData, TValue>({
         <Input
           className="max-w-sm"
           placeholder="Search"
-          value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
+          value={
+            (table.getColumn(`${searchKey}`)?.getFilterValue() as string) ?? ""
+          }
           onChange={(e) =>
-            table.getColumn(searchKey)?.setFilterValue(e.target.value)
+            table.getColumn(`${searchKey}`)?.setFilterValue(e.target.value)
           }
         />
       </div>
