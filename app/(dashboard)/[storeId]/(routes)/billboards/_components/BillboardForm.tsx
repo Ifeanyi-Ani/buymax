@@ -79,12 +79,53 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
     }
   };
 
+  const onDelete = async () => {
+    try {
+      setLoading(true);
+
+      await axios.delete(`/api/${storeId}/billboards/${billboardId}`);
+
+      toast.success("Store deleted successfully");
+
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+
+      toast.error("Make sure you removed all products and categories first.");
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  };
   return (
     <>
+      <UseAlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        isLoading={loading}
+      />
+
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
+
+        {initialData && (
+          <Button
+            disabled={loading}
+            variant="destructive"
+            size="icon"
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <Trash className="h-4 w-4" />
+          </Button>
+        )}
       </div>
+
       <Separator />
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -134,6 +175,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
               }}
             />
           </div>
+
           <Button disabled={loading} className="ml-auto" type="submit">
             {buttonText}
           </Button>
