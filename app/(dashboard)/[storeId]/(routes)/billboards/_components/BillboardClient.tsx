@@ -5,8 +5,13 @@ import { Heading } from "@/components/Heading";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
+import { BillboardCol, columns } from "./Columns";
 
 export const BillboardClient = () => {
+interface Props {
+  billboards: BillboardCol[];
+}
+export const BillboardClient = (props: Props) => {
   const router = useRouter();
   const { storeId } = useParams();
   return (
