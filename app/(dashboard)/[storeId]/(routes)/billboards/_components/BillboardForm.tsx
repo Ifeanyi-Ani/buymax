@@ -87,10 +87,23 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
         onConfirm={onDelete}
         isLoading={loading}
       />
+
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
+
+        {initialData && (
+          <Button
+            disabled={loading}
+            variant="destructive"
+            size="icon"
+          >
+            <Trash className="h-4 w-4" />
+          </Button>
+        )}
       </div>
+
       <Separator />
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
