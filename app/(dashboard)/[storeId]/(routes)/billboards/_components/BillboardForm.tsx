@@ -74,7 +74,11 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
     } catch (error: any) {
       console.log(error);
 
-      toast.error("Something went wrong while updating store");
+      toast.error(
+        error.response.data ||
+          error.message ||
+          "Something went wrong while updating store",
+      );
     } finally {
       setLoading(false);
     }
