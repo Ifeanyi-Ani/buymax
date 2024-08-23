@@ -37,7 +37,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <ModalProvider />
             <main>{children}</main>
-            <Toaster position="top-center" />
+            <Toaster position="top-center" invert richColors />
           </ThemeProvider>
         </body>
       </html>
