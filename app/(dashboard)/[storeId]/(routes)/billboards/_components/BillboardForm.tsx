@@ -81,6 +81,12 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
 
   return (
     <>
+      <UseAlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        isLoading={loading}
+      />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
       </div>
