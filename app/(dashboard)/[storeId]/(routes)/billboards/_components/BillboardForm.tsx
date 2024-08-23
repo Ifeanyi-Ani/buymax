@@ -70,7 +70,8 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
       toast.success(formMessage);
 
       router.refresh();
-    } catch (error) {
+      router.push(`/${storeId}/billboards`);
+    } catch (error: any) {
       console.log(error);
 
       toast.error("Something went wrong while updating store");
