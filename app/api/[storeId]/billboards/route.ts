@@ -61,3 +61,42 @@ export async function POST(req: Request, props: Props) {
   }
 }
 
+export async function GET(_req: Request, props: Props) {
+  try {
+    const {
+      params: { storeId },
+    } = props;
+
+    const { userId } = auth();
+
+    if (!userId) {
+      return new NextResponse("Unauthenticated", { status: 401 });
+    }
+
+    if (!storeId) {
+      return new NextResponse("storeId is required", { status: 400 });
+    }
+
+    const storeByUserId = await prismaDb.store.findFirst({
+      where: {
+        userId,
+        id: storeId,
+      },
+    });
+
+    if (!storeByUserId) {
+      return new NextResponse("Unauthorized", { status: 403 });
+    }
+
+    const billboards = await prismaDb.billboard.findMany({
+      where: {
+        storeId,
+      },
+    });
+
+    return NextResponse.json(billboards);
+  } catch (error) {
+    console.error("BILLBOARD_GET", error);
+    return new NextResponse("Internal server error", { status: 500 });
+  }
+}
