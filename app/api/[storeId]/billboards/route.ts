@@ -2,12 +2,12 @@ import prismaDb from "@/lib/prismaDb";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-interface PostProps {
+interface Props {
   params: {
     storeId: string;
   };
 }
-export async function POST(req: Request, props: PostProps) {
+export async function POST(req: Request, props: Props) {
   try {
     // Extract store ID from the request parameters
     const {
