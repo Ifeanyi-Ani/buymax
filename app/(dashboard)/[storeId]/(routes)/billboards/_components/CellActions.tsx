@@ -21,11 +21,11 @@ interface Props {
 
 export const CellAction = (props: Props) => {
   const { data } = props;
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
   const { storeId } = useParams();
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
