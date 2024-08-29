@@ -36,7 +36,7 @@ export const CellAction = (props: Props) => {
     try {
       setLoading(true);
 
-      const res = await axios.delete(`/api/${storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${storeId}/billboards/${data.id}`);
       toast.success("Billboard deleted successfully");
 
       router.refresh();
