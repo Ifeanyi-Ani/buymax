@@ -186,9 +186,6 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-
-      <Separator />
-
     </>
   );
 };
