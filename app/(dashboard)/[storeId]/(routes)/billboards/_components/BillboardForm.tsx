@@ -92,7 +92,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
 
       toast.success("Store deleted successfully");
 
-      router.push("/");
+      router.push(`/${storeId}/billboards`);
       router.refresh();
     } catch (error) {
       console.error(error);
