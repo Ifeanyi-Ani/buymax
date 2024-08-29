@@ -7,6 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { BillboardCol, columns } from "./Columns";
 import { DataTable } from "@/components/DataTable";
+import { ApiList } from "@/components/api-list";
 
 interface Props {
   billboards: BillboardCol[];
@@ -28,8 +29,16 @@ export const BillboardClient = (props: Props) => {
           Add New
         </Button>
       </div>
+
       <Separator />
+
       <DataTable searchKey="label" columns={columns} data={billboards} />
+
+      <Heading title="API" description="API calls for billboards" />
+
+      <Separator />
+
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
   );
 };
