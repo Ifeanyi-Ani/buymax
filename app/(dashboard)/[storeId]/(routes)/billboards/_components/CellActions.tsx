@@ -21,11 +21,11 @@ interface Props {
 
 export const CellAction = (props: Props) => {
   const { data } = props;
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-
   const { storeId } = useParams();
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
@@ -36,7 +36,7 @@ export const CellAction = (props: Props) => {
     try {
       setLoading(true);
 
-      const res = await axios.delete(`/api/${storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${storeId}/billboards/${data.id}`);
       toast.success("Billboard deleted successfully");
 
       router.refresh();
@@ -74,7 +74,9 @@ export const CellAction = (props: Props) => {
             Copy Id
           </DropdownMenuItem>
 
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => router.push(`/${storeId}/billboards/${data.id}`)}
+          >
             <Edit className="mr-2 h-4 w-4" />
             Edit
           </DropdownMenuItem>

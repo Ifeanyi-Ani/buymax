@@ -69,8 +69,8 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
 
       toast.success(formMessage);
 
-      router.refresh();
       router.push(`/${storeId}/billboards`);
+      router.refresh();
     } catch (error: any) {
       console.log(error);
 
@@ -92,7 +92,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
 
       toast.success("Store deleted successfully");
 
-      router.push("/");
+      router.push(`/${storeId}/billboards`);
       router.refresh();
     } catch (error) {
       console.error(error);
@@ -159,7 +159,7 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
             }}
           />
 
-          <div className="grid grid-cols-3 gap-">
+          <div className="grid grid-cols-3 gap-2">
             <FormField
               control={form.control}
               name="label"
@@ -186,9 +186,6 @@ export const BillboardForm: React.FC<Props> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
-
-      <Separator />
-
     </>
   );
 };
